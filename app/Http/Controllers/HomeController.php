@@ -16,8 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
         $this->recipes = new RecipesController();
+
     }
 
     /**
@@ -44,4 +44,5 @@ class HomeController extends Controller
     {
       return $this->recipes->search($request->search);
     }
+
 }

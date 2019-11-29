@@ -14,15 +14,15 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert([
           'name' => 'admin',
           'email' => 'admin@kokiku.com',
-          'password' => 'admin',
+          'password' => Hash::make('admin'),
           'role' => 'admin',
         ]);
 
         DB::table('users')->insert([
           'name' => 'user',
           'email' => 'user@kokiku.com',
-          'password' => 'user',
-          'role' => 'unserialize',
+          'password' => Hash::make('user'),
+          'role' => 'user',
         ]);
     }
 }

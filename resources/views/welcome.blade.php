@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Kokiku</title>
 
   <link rel="icon" href="{{ asset('images/kokiku.png') }}">
@@ -30,15 +31,28 @@
   <header class="header-section">
     <div class="container">
       <div class="logo">
-        <a href="./index.html"><img src="{{ asset('images/kokiku.png') }}" alt="" height="250"></a>
+        <a href="/"><img src="{{ asset('images/kokiku.png') }}" alt="" height="250"></a>
       </div>
       <div class="nav-menu">
         <nav class="main-menu mobile-menu">
           <ul>
             <li class="active"><a href="#">Home</a></li>
             <li><a href="{{ url('/recipes') }}">Recipes</a></li>
+            @if(empty(Auth::user()))
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('register') }}">Daftar</a></li>
+            @else
+            <li><a href="{{ route('login') }}">{{ ucfirst(Auth::user()->name) }}</a>
+              <ul class="sub-menu">
+                <li><a href="{{ url('/profile') }}">Edit Profile</a></li>
+                <li><a href="{{ url('/upload-recipes') }}">Upload Resep</a></li>
+                <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+              </ul>
+            </li>
+            @endif
           </ul>
         </nav>
         <div class="nav-right search-switch">
@@ -134,8 +148,9 @@
     <div class="search-model">
       <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-          <input type="text" id="search-input" placeholder="Search here.....">
+        <form action="{{ url('/search') }}" method="post" class="search-model-form">
+          @csrf
+          <input type="text" id="search-input" name="search" placeholder="Cari Resep.....">
         </form>
       </div>
     </div>

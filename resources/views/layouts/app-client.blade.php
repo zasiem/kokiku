@@ -40,7 +40,16 @@
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('register') }}">Daftar</a></li>
             @else
-            <li><a href="{{ route('login') }}">{{ Auth::user()->name }}</a></li>
+            <li><a href="{{ route('login') }}">{{ ucfirst(Auth::user()->name) }}</a>
+              <ul class="sub-menu">
+                  <li><a href="{{ url('/profile') }}">Edit Profile</a></li>
+                  <li><a href="{{ url('/upload-recipes') }}">Upload Resep</a></li>
+                  <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+              </ul>
+            </li>
             @endif
           </ul>
         </nav>

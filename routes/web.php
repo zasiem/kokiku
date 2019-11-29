@@ -19,3 +19,8 @@ Route::get('/', 'HomeController@welcome');
 Route::get('/recipes', 'HomeController@recipes');
 Route::get('/detail-recipe/{id}', 'HomeController@detail_recipe');
 Route::post('/search', 'HomeController@search');
+
+Route::get('/profile', 'DashboardController@profile');
+Route::post('/edit-profile', 'UsersController@update');
+
+Route::get('/home' ,'DashboardController@index');
