@@ -130,6 +130,9 @@
     <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('js/mixitup.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    @stack('script')
+
   </body>
 
   </html>

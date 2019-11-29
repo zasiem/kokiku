@@ -73,7 +73,7 @@
         <div class="col-lg-6">
           <div class="top-recipe-item large-item">
             <a href="{{ url('detail-recipe/'.$recipe->id) }}">
-              <div class="top-recipe-img set-bg" data-setbg="img/top-recipe/recipe-1.jpg">
+              <div class="top-recipe-img set-bg" data-setbg="{{ url('storage/'.$recipe->image) }}">
                 <i class="fa fa-search"></i>
               </div>
             </a>
@@ -86,13 +86,13 @@
             </div>
           </div>
         </div>
-        @else
         <div class="col-lg-6">
+          @else
           <div class="top-recipe-item">
             <div class="row">
               <div class="col-sm-4">
                 <a href="{{ url('detail-recipe/'.$recipe->id) }}">
-                  <div class="top-recipe-img set-bg" data-setbg="img/top-recipe/recipe-2.jpg">
+                  <div class="top-recipe-img set-bg" data-setbg="{{ url('storage/'.$recipe->image) }}">
                     <i class="fa fa-search"></i>
                   </div>
                 </a>
@@ -108,9 +108,9 @@
               </div>
             </div>
           </div>
+          @endif
+          @endforeach
         </div>
-        @endif
-        @endforeach
       </div>
     </div>
   </section>
