@@ -11,17 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/recipes', function(){
-  return view('recipes');
-});
-
-Route::get('/detail-recipe', function(){
-  return view('detail-recipe');
-});
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@welcome');
+Route::get('/recipes', 'HomeController@recipes');
+Route::get('/detail-recipe/{id}', 'HomeController@detail_recipe');
+Route::post('/search', 'HomeController@search');

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
+    private $recipes;
+
     /**
      * Create a new controller instance.
      *
@@ -13,7 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
+        $this->recipes = new RecipesController();
     }
 
     /**
@@ -21,8 +25,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function welcome()
     {
-        return view('home');
+        return $this->recipes->welcome();
+    }
+
+    public function recipes()
+    {
+        return $this->recipes->index();
+    }
+
+    public function detail_recipe($id)
+    {
+      return $this->recipes->show($id);
+    }
+
+    public function search(Request $request)
+    {
+      return $this->recipes->search($request->search);
     }
 }
