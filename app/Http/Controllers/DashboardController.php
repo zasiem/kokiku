@@ -44,6 +44,7 @@ class DashboardController extends Controller
   {
 
     $path_video = null;
+    //return dd($request->file('video'));
     $path_image = $request->file('image')->store('recipe_image', 'public');
     if ($request->video != null) {
       $path_video = $request->file('video')->store('recipe_video', 'public');

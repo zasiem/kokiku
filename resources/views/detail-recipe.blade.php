@@ -58,6 +58,9 @@
       </div>
       <div class="col-lg-7">
         <div class="recipe-right">
+          @if($recipe->video != null)
+          <video src="{{ url('storage/'.$recipe->video) }}" alt="" height="350px" width="100%"></video>
+          @endif
           <div class="recipe-desc">
             <h3>Deskripsi</h3>
             <p>{{ $recipe->description }}</p>
