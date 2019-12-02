@@ -24,5 +24,7 @@ Route::get('/profile', 'DashboardController@profile');
 Route::post('/edit-profile', 'UsersController@update');
 Route::get('/upload-recipes', 'DashboardController@upload_recipes');
 Route::post('/proses-upload-recipe', 'DashboardController@proses_upload_recipe');
+Route::post('/proses-comment', 'DashboardController@proses_comment');
+Route::post('/proses-like', 'DashboardController@proses_like');
 
 Route::get('/home' ,'DashboardController@index');

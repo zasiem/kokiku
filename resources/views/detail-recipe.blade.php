@@ -11,6 +11,10 @@
         <ul class="tags">
           <li>{{ $recipe->category }}</li>
         </ul>
+        <form action="{{ url('/proses-like') }}" class="comment-form mt-3" method="post">
+          @csrf
+          <button class="btn btn-outline-danger" type="submit" value="{{ $recipe->id }}" name="id" style="width:100px;">Like</button>
+        </form>
       </div>
       <img src="{{ url('storage/'.$recipe->image) }}" alt="" height="450px" width="100%">
     </div>
@@ -25,6 +29,7 @@
             <div class="recipe-time">
               <ul>
                 <li>Lama : <span>{{ $recipe->duration }} min</span></li>
+                <li>Likes : <span>{{ $recipe->likes }}</span></li>
               </ul>
             </div>
           </div>
@@ -72,6 +77,37 @@
       </div>
     </div>
   </div>
-</div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-8">
+      <div class="blog-text">
+        <div class="blog-comment">
+          <h3>Comments ({{ $recipe->comments->count() }})</h3>
+          @foreach($recipe->comments as $comment)
+          <div class="single-comment">
+            <img src="{{ asset('images/user.png') }}" alt="">
+            <ul>
+              <li>{{ $comment->users->name }}</li>
+            </ul>
+            <p>{{ $comment->comment }}</p>
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="blog-text">
+        <form action="{{ url('/proses-comment') }}" class="comment-form" method="post">
+          @csrf
+          <h3>Tinggalkan Komentar</h3>
+          <div class="row">
+            <div class="col-lg-12">
+              <textarea placeholder="Tuliskan Komentar" name="comments" required></textarea>
+            </div>
+          </div>
+          <button type="submit" value="{{ $recipe->id }}" name="id">Komen</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
 @endsection

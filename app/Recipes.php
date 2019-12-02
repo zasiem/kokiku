@@ -20,4 +20,8 @@ class Recipes extends Model
       return $this->hasMany('App\Tutorial', 'recipes_id', 'id');
     }
 
+    public function comments(){
+      return $this->hasMany('App\Comments', 'recipes_id', 'id');
+    }
+
 }

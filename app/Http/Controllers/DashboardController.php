@@ -8,6 +8,7 @@ use App\Recipes;
 use App\Bahan;
 use App\Tutorial;
 use App\Alat;
+use App\Comments;
 
 class DashboardController extends Controller
 {
@@ -87,6 +88,21 @@ class DashboardController extends Controller
 
     return redirect('/');
 
+  }
+
+  public function proses_comment(Request $request){
+    Comments::insert([
+      'recipes_id' => $request->id,
+      'users_id' => Auth::user()->id,
+      'comment' => $request->comments,
+    ]);
+
+    return redirect()->back();
+  }
+
+  public function proses_like(Request $request){
+    $likes = Recipes::find($request->id)->increment('likes');
+    return redirect()->back();
   }
 
 }

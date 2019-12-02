@@ -62,7 +62,7 @@ class RecipesController extends Controller
      */
     public function show($id)
     {
-      $data = Recipes::with('tutorial', 'bahan', 'alat')
+      $data = Recipes::with('tutorial', 'bahan', 'alat', 'comments')
       ->where('id', $id)
       ->get();
 
