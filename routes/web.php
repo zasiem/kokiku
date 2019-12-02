@@ -27,4 +27,9 @@ Route::post('/proses-upload-recipe', 'DashboardController@proses_upload_recipe')
 Route::post('/proses-comment', 'DashboardController@proses_comment');
 Route::post('/proses-like', 'DashboardController@proses_like');
 
+Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/recipes' ,'DashboardController@lihatrecipes');
+Route::get('/dashboard/add-recipes' ,'DashboardController@tambahrecipes');
+Route::post('/dashboard/delete-recipe', 'DashboardController@deleterecipe');
+
 Route::get('/home' ,'DashboardController@index');

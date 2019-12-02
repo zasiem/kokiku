@@ -86,7 +86,7 @@ class DashboardController extends Controller
       ]);
     }
 
-    return redirect('/');
+    return redirect()->back();
 
   }
 
@@ -103,6 +103,44 @@ class DashboardController extends Controller
   public function proses_like(Request $request){
     $likes = Recipes::find($request->id)->increment('likes');
     return redirect()->back();
+  }
+
+  public function lihatrecipes(){
+    $role = Auth::user()->role;
+    if ($role == 'user') {
+      return redirect('/');
+    }
+
+    $data['recipes'] = Recipes::with('tutorial', 'bahan', 'alat', 'comments')
+    ->get();
+
+    return view('lihat-recipes', $data);
+
+  }
+
+  public function deleterecipe(Request $request){
+    $role = Auth::user()->role;
+    if ($role == 'user') {
+      return redirect('/');
+    }
+
+    Bahan::Where('recipes_id', $request->id)->delete();
+    Tutorial::Where('recipes_id', $request->id)->delete();
+    Alat::Where('recipes_id', $request->id)->delete();
+    Comments::Where('recipes_id', $request->id)->delete();
+    Recipes::Where('id', $request->id)->delete();
+
+    return redirect()->back();
+
+  }
+
+  public function tambahrecipes(){
+    $role = Auth::user()->role;
+    if ($role == 'user') {
+      return redirect('/');
+    }
+
+    return view('tambah-recipes');
   }
 
 }
