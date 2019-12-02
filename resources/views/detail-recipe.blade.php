@@ -12,7 +12,7 @@
           <li>{{ $recipe->category }}</li>
         </ul>
       </div>
-      <img src="img/recipe-single.jpg" alt="">
+      <img src="{{ url('storage/'.$recipe->image) }}" alt="" height="450px" width="100%">
     </div>
   </div>
   <div class="container">
@@ -20,7 +20,7 @@
       <div class="col-lg-5">
         <div class="ingredients-item">
           <div class="intro-item">
-            <img src="img/intro-img.jpg" alt="">
+            <img src="{{ url('storage/'.$recipe->image) }}" alt="">
             <h2>{{ $recipe->name }}</h2>
             <div class="recipe-time">
               <ul>

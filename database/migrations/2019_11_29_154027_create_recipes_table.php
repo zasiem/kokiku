@@ -21,6 +21,7 @@ class CreateRecipesTable extends Migration
             $table->string('image');
             $table->string('category');
             $table->string('video')->nullable();
+            $table->string('likes')->default(0);
             $table->timestamps();
         });
     }

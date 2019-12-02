@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Recipes;
+use App\Bahan;
+use App\Tutorial;
+use App\Alat;
 
 class DashboardController extends Controller
 {
@@ -38,6 +41,7 @@ class DashboardController extends Controller
 
   public function proses_upload_recipe(Request $request)
   {
+
     $path_video = null;
     $path_image = $request->file('image')->store('recipe_image', 'public');
     if ($request->video != null) {
@@ -52,6 +56,34 @@ class DashboardController extends Controller
       'image' => $path_image,
       'video' => $path_video,
     ]);
+
+    $recipes_id = Recipes::select('id')
+    ->orderBy('id', 'DESC')
+    ->first();
+
+    //bahan
+    for ($i=0; $i < count($request->bahan); $i++) {
+      Bahan::insert([
+        'recipes_id' => $recipes_id->id,
+        'nama_bahan' => $request->bahan[$i],
+      ]);
+    }
+
+    //alat
+    for ($i=0; $i < count($request->alat); $i++) {
+      Alat::insert([
+        'recipes_id' => $recipes_id->id,
+        'nama_alat' => $request->alat[$i],
+      ]);
+    }
+
+    //tutorial
+    for ($i=0; $i < count($request->tutorial); $i++) {
+      Tutorial::insert([
+        'recipes_id' => $recipes_id->id,
+        'tutorial' => $request->tutorial[$i],
+      ]);
+    }
 
     return redirect('/');
 

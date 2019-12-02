@@ -95,9 +95,7 @@
                 <img src="{{ asset('images/kokiku.png') }}" alt="">
               </a>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-              viverra maecenas accumsan lacus vel facilisis.</p>
+            <p>Platform kumpulan resep-resep masakan.</p>
             </div>
           </div>
           <div class="col-lg-6 offset-lg-1">
@@ -116,8 +114,9 @@
     <div class="search-model">
       <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-          <input type="text" id="search-input" placeholder="Search here.....">
+        <form class="search-model-form" method="post" action="{{ url('/search') }}">
+          @csrf
+          <input name="search" type="text" id="search-input" placeholder="Cari Resep.....">
         </form>
       </div>
     </div>

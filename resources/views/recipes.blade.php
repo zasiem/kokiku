@@ -8,7 +8,7 @@
     @foreach($recipes as $recipe)
     <div class="col-lg-4 col-sm-6">
       <div class="recipe-item">
-        <a href="{{ url('detail-recipe/'.$recipe->id) }}"><img src="img/recipe/recipe-1.jpg" alt=""></a>
+        <a href="{{ url('detail-recipe/'.$recipe->id) }}"><img src="{{ url('storage/'.$recipe->image) }}" alt="" height="350"></a>
         <div class="ri-text">
           <div class="cat-name">{{ $recipe->category }}</div>
           <a href="{{ url('detail-recipe/'.$recipe->id) }}">

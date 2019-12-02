@@ -23,6 +23,39 @@
             <div class="col-md-12">
               <input id="kategori" type="text" name="category" required placeholder="Kategori">
             </div>
+            <div class="col-md-12 filter-table mb-3">
+              <select class="btn btn-outline-secondary w-100" name="jml_bahan">
+                <option value="">Masukan Jumlah Bahan</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="col-md-12" id="bahan_section"></div>
+            <div class="col-md-12 filter-table mb-3">
+              <select class="btn btn-outline-secondary w-100" name="jml_alat">
+                <option value="">Masukan Jumlah Alat</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="col-md-12" id="alat_section"></div>
+            <div class="col-md-12 filter-table mb-3">
+              <select class="btn btn-outline-secondary w-100" name="jml_tutorial">
+                <option value="">Masukan Jumlah Tutorial</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="col-md-12" id="tutorial_section"></div>
             <div class="col-md-12 mb-3">
               <div class="custom-file">
                 <input type="file" name="image" class="custom-file-input" required>
@@ -52,5 +85,30 @@ $(".custom-file-input").on("change", function() {
   var fileName = $(this).val().split("\\").pop();
   $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
+
+$("select[name='jml_bahan']").on("change", function() {
+  var banyak = $("select[name='jml_bahan']").val();
+  $("#bahan_section").empty();
+  for (var i = 1; i <= banyak; i++) {
+    $("#bahan_section").append('<input type="text" name="bahan[]" required placeholder="Masukan Bahan '+i+' ">');
+  }
+});
+
+$("select[name='jml_alat']").on("change", function() {
+  var banyak = $("select[name='jml_alat']").val();
+  $("#alat_section").empty();
+  for (var i = 1; i <= banyak; i++) {
+    $("#alat_section").append('<input type="text" name="alat[]" required placeholder="Masukan Alat '+i+' ">');
+  }
+});
+
+$("select[name='jml_tutorial']").on("change", function() {
+  var banyak = $("select[name='jml_tutorial']").val();
+  $("#tutorial_section").empty();
+  for (var i = 1; i <= banyak; i++) {
+    $("#tutorial_section").append('<input type="text" name="tutorial[]" required placeholder="Masukan Tutorial '+i+' ">');
+  }
+});
+
 </script>
 @endpush
