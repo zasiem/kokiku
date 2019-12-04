@@ -127,17 +127,8 @@
                 <img src="{{ asset('images/kokiku.png') }}" alt="">
               </a>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-              viverra maecenas accumsan lacus vel facilisis.</p>
+            <p>Platform kumpulan resep-resep masakan.</p>
             </div>
-          </div>
-          <div class="col-lg-6 offset-lg-1">
-            <form action="#" class="subscribe-form">
-              <h3>Subscribe to our newsletter</h3>
-              <input type="email" placeholder="Your e-mail">
-              <button type="submit">Subscribe</button>
-            </form>
           </div>
         </div>
       </div>

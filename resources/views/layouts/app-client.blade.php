@@ -98,13 +98,6 @@
             <p>Platform kumpulan resep-resep masakan.</p>
             </div>
           </div>
-          <div class="col-lg-6 offset-lg-1">
-            <form action="#" class="subscribe-form">
-              <h3>Subscribe to our newsletter</h3>
-              <input type="email" placeholder="Your e-mail">
-              <button type="submit">Subscribe</button>
-            </form>
-          </div>
         </div>
       </div>
     </footer>
